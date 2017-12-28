@@ -1,4 +1,4 @@
-(defproject district-ui-window-size "1.0.0"
+(defproject district0x/district-ui-window-size "1.0.0"
   :description "district UI module for handling window size in breakpoints"
   :url "https://github.com/district0x/district-ui-web3-balances"
   :license {:name "Eclipse Public License"
