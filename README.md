@@ -5,7 +5,7 @@
 Clojurescript [mount](https://github.com/tolitius/mount) + [re-frame](https://github.com/Day8/re-frame) module for a district UI, that provides window size in form of breakpoints.
 
 ## Installation
-Add `[district0x/district-ui-window-size "1.0.0"]` into your project.clj  
+Add `[district0x/district-ui-window-size "1.0.1"]` into your project.clj  
 Include `[district.ui.window-size]` in your CLJS file, where you use `mount/start`
 
 **Warning:** district0x modules are still in early stages, therefore API can change in a future.
