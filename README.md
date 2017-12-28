@@ -93,7 +93,7 @@ True if window is tablet or bigger.
           [:div "This screen is computer, large monitor or wide monitor"]))))
 ```
 
-## district.ui.web3-balances.events
+## district.ui.window-size.events
 re-frame events provided by this module:
 
 #### `::start [opts]`
