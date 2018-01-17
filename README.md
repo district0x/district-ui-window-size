@@ -8,7 +8,45 @@ Clojurescript [mount](https://github.com/tolitius/mount) + [re-frame](https://gi
 Add `[district0x/district-ui-window-size "1.0.1"]` into your project.clj  
 Include `[district.ui.window-size]` in your CLJS file, where you use `mount/start`
 
+## API Overview
+
 **Warning:** district0x modules are still in early stages, therefore API can change in a future.
+
+- [district.ui.window-size](#districtuiwindow-size)
+- [district.ui.window-size.subs](#districtuiwindow-sizesubs)
+  - [::breakpoints](#breakpoints-sub)
+  - [::size](#size-sub)
+  - [::wide-monitor?](#wide-monitor?-sub)
+  - [::large-monitor?](#large-monitor?-sub)
+  - [::computer?](#computer?-sub)
+  - [::tablet?](#tablet?-sub)
+  - [::mobile?](#mobile?-sub)
+  - [::max-large-monitor?](#max-large-monitor?-sub)
+  - [::max-computer?](#max-computer?-sub)
+  - [::max-tablet?](#max-tablet?-sub)
+  - [::min-large-monitor?](#min-large-monitor?-sub)
+  - [::min-computer?](#min-computer?-sub)
+  - [::min-tablet?](#min-tablet?-sub)
+- [district.ui.window-size.events](#districtuiwindow-sizeevents)
+  - [::window-resized](#window-resized)
+  - [::size-changed](#size-changed)
+- [district.ui.window-size.queries](#districtuiwindow-sizequeries)
+  - [breakpoints](#breakpoints)
+  - [size](#size)
+  - [wide-monitor?](#wide-monitor?)
+  - [large-monitor?](#large-monitor?)
+  - [computer?](#computer?)
+  - [tablet?](#tablet?)
+  - [mobile?](#mobile?)
+  - [max-large-monitor?](#max-large-monitor?)
+  - [max-computer?](#max-computer?)
+  - [max-tablet?](#max-tablet?)
+  - [min-large-monitor?](#min-large-monitor?)
+  - [min-computer?](#min-computer?)
+  - [min-tablet?](#min-tablet?)
+  - [assoc-breakpoints](#assoc-breakpoints)
+  - [assoc-size](#assoc-size)
+  - [assoc-window-size](#assoc-window-size)
 
 ## district.ui.window-size
 This namespace contains window-size [mount](https://github.com/tolitius/mount) module.
@@ -41,43 +79,43 @@ You can pass following args to initiate this module:
 ## district.ui.window-size.subs
 re-frame subscriptions provided by this module:
 
-#### `::breakpoints`
+#### <a name="breakpoints-sub">`::breakpoints []`
 Returns breakpoints.
 
-#### `::size`
+#### <a name="size-sub">`::size []`
 Returns current window size (0-4) as defined by breakpoints.
 
-#### `::wide-monitor?`
+#### <a name="wide-monitor?-sub">`::wide-monitor? []`
 True if window is wide monitor.
 
-#### `::large-monitor?`
+#### <a name="large-monitor?-sub">`::large-monitor? []`
 True if window is large monitor.
 
-#### `::computer?`
+#### <a name="computer?-sub">`::computer? []`
 True if window is computer.
 
-#### `::tablet?`
+#### <a name="tablet?-sub">`::tablet? []`
 True if window is tablet.
 
-#### `::mobile?`
+#### <a name="mobile?-sub">`::mobile? []`
 True if window is mobile.
 
-#### `::max-large-monitor?`
+#### <a name="max-large-monitor?-sub">`::max-large-monitor? []`
 True if window is anything up to large monitor (including).
 
-#### `::max-computer?`
+#### <a name="max-computer?-sub">`::max-computer? []`
 True if window is anything up to computer (including).
 
-#### `::max-tablet?`
+#### <a name="max-tablet?-sub">`::max-tablet? []`
 True if window is anything up to tablet (including).
 
-#### `::min-large-monitor?`
+#### <a name="min-large-monitor?-sub">`::min-large-monitor? []`
 True if window is large monitor or bigger.
 
-#### `::min-computer?`
+#### <a name="min-computer?-sub">`::min-computer? []`
 True if window is computer or bigger.
 
-#### `::min-tablet?`
+#### <a name="min-tablet?-sub">`::min-tablet? []`
 True if window is tablet or bigger.
 
 ```clojure
@@ -96,77 +134,68 @@ True if window is tablet or bigger.
 ## district.ui.window-size.events
 re-frame events provided by this module:
 
-#### `::start [opts]`
-Event fired at mount start.
-
-#### `::window-resized [width height]`
+#### <a name="window-resized">`::window-resized [width height]`
 Event fired when window has been resized
 
-#### `::size-changed [new-size old-size]`
+#### <a name="size-changed">`::size-changed [new-size old-size]`
 Event fired when size, as defined by breakpoints, was actually changed. You can use this event to hook into event flow, e.g with [re-frame-forward-events-fx](https://github.com/Day8/re-frame-forward-events-fx).
-
-#### `::stop`
-Cleanup event fired on mount stop.
 
 ## district.ui.window-size.queries
 DB queries provided by this module:  
 *You should use them in your events, instead of trying to get this module's 
 data directly with `get-in` into re-frame db.*
 
-#### `breakpoints [db]`
+#### <a name="breakpoints">`breakpoints [db]`
 Works the same way as sub `::breakpoints`
 
-#### `size [db]`
+#### <a name="size">`size [db]`
 Works the same way as sub `::size`
 
-#### `calculate-size [db window-width & [breakpoints]]`
+#### <a name="calculate-size">`calculate-size [db window-width & [breakpoints]]`
 Calculates window size (0-4) given width in pixels. Optionally, you can pass breakpoints, otherwise breakpoints from
 initial configuration will be used.
 
-#### `wide-monitor? [db]`
+#### <a name="wide-monitor?">`wide-monitor? [db]`
 Works the same way as sub `::wide-monitor?`
 
-#### `large-monitor? [db]`
+#### <a name="large-monitor?">`large-monitor? [db]`
 Works the same way as sub `::large-monitor?`
 
-#### `computer? [db]`
+#### <a name="computer?">`computer? [db]`
 Works the same way as sub `::computer?`
 
-#### `tablet? [db]`
+#### <a name="tablet?">`tablet? [db]`
 Works the same way as sub `::tablet?`
 
-#### `mobile? [db]`
+#### <a name="mobile?">`mobile? [db]`
 Works the same way as sub `::mobile?`
 
-#### `max-large-monitor? [db]`
+#### <a name="max-large-monitor?">`max-large-monitor? [db]`
 Works the same way as sub `::max-large-monitor?`
 
-#### `max-computer? [db]`
+#### <a name="max-computer?">`max-computer? [db]`
 Works the same way as sub `::max-computer?`
 
-#### `max-tablet? [db]`
+#### <a name="max-tablet?">`max-tablet? [db]`
 Works the same way as sub `::max-tablet?`
 
-#### `min-large-monitor? [db]`
+#### <a name="min-large-monitor?">`min-large-monitor? [db]`
 Works the same way as sub `::min-large-monitor?`
 
-#### `min-computer? [db]`
+#### <a name="min-computer?">`min-computer? [db]`
 Works the same way as sub `::min-computer?`
 
-#### `min-tablet? [db]`
+#### <a name="min-tablet?">`min-tablet? [db]`
 Works the same way as sub `::min-tablet?`
 
-#### `assoc-breakpoints [db breakpoints]`
+#### <a name="assoc-breakpoints">`assoc-breakpoints [db breakpoints]`
 Associates breakpoints and returns new re-frame db.
 
-#### `assoc-size [db size]`
+#### <a name="assoc-size">`assoc-size [db size]`
 Associates size and returns new re-frame db.
 
-#### `assoc-window-size [db {:keys [:breakpoints :size]}]`
+#### <a name="assoc-window-size">`assoc-window-size [db {:keys [:breakpoints :size]}]`
 Associates size, breakpoints and returns new re-frame db.
-
-#### `dissoc-window-size [db]`
-Cleans up this module from re-frame db. 
 
 ## Development
 ```bash
