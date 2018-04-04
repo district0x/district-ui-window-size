@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/district0x/district-ui-window-size.svg?branch=master)](https://travis-ci.org/district0x/district-ui-window-size)
 
-Clojurescript [mount](https://github.com/tolitius/mount) + [re-frame](https://github.com/Day8/re-frame) module for a district UI, that provides window size in form of breakpoints.
+Clojurescript [re-mount](https://github.com/district0x/d0x-INFRA/blob/master/re-mount.md) module, 
+that provides window size in form of breakpoints.
 
 ## Installation
 Add `[district0x/district-ui-window-size "1.0.1"]` into your project.clj  
